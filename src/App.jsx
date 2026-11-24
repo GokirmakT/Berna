@@ -29,6 +29,9 @@ const services = [
   {
     number: '01',
     title: 'Bireysel terapi',
+    image:
+      'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&h=600&crop=faces&q=85',
+    imageAlt: 'Bireysel terapi çalışma alanını temsil eden fotoğraf',
     description:
       'Yetişkinlerle bireysel görüşmelerde duygu durumu, yaşam olayları ve terapi hedefleri ele alınır.',
     note: 'Yetişkinlerle çalışma',
@@ -36,6 +39,9 @@ const services = [
   {
     number: '02',
     title: 'Kaygı ve stres',
+    image:
+      'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&h=600&q=85',
+    imageAlt: 'Sakinleşme ve stres yönetimini temsil eden fotoğraf',
     description:
       'Kaygı belirtileri ve stresin günlük yaşama etkileri değerlendirilir; çalışma hedefleri görüşmelerde belirlenir.',
     note: 'Kaygı belirtileri',
@@ -43,6 +49,9 @@ const services = [
   {
     number: '03',
     title: 'İlişkiler',
+    image:
+      'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&h=600&q=85',
+    imageAlt: 'Yakın ilişkileri ve sosyal bağı temsil eden fotoğraf',
     description:
       'Yakın ilişkilerde iletişim, sınırlar ve tekrar eden ilişki örüntüleri üzerinde çalışılır.',
     note: 'İlişki dinamikleri',
@@ -852,6 +861,23 @@ function App() {
                     },
                   }}
                 >
+                  <Box
+                    component="img"
+                    src={service.image}
+                    alt={service.imageAlt}
+                    loading="lazy"
+                    sx={{
+                      display: 'block',
+                      width: '100%',
+                      aspectRatio: '3 / 2',
+                      height: 'auto',
+                      mb: 2.5,
+                      objectFit: 'cover',
+                      objectPosition: 'center',
+                      borderRadius: '6px',
+                      filter: 'saturate(0.82)',
+                    }}
+                  />
                   <Stack
                     direction="row"
                     sx={{ alignItems: 'center', justifyContent: 'space-between' }}
@@ -959,17 +985,6 @@ function App() {
                   Terapi süreci nasıl ilerler?
                 </Typography>
               </Box>
-              <Typography
-                sx={{
-                  maxWidth: 355,
-                  color: 'rgba(247,246,241,0.72)',
-                  fontSize: 13,
-                  lineHeight: 1.9,
-                }}
-              >
-                İlk görüşmede ihtiyaçlar değerlendirilir. Sonraki görüşmelerin
-                hedefleri ve sıklığı danışanla birlikte belirlenir.
-              </Typography>
             </Stack>
             <Box
               sx={{
