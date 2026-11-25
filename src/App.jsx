@@ -1,29 +1,17 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import {
+  Alert,
   Box,
   Button,
   Container,
-  IconButton,
   Paper,
   Stack,
   Typography,
 } from '@mui/material'
-
-const colors = {
-  green: '#0D3D33',
-  cream: '#F7F6F1',
-  sage: '#ADCDB8',
-  sageLight: '#E6ECE4',
-  muted: '#64736D',
-  line: 'rgba(13, 61, 51, 0.18)',
-}
-
-const links = [
-  { label: 'Hakkımda', href: '#hakkimda' },
-  { label: 'Çalışma alanları', href: '#alanlar' },
-  { label: 'Terapi süreci', href: '#surec' },
-  { label: 'İletişim', href: '#iletisim' },
-]
+import { Link, useLocation } from 'react-router-dom'
+import { Arrow, SiteLayout } from './SiteChrome.jsx'
+import { colors } from './theme.js'
+import { useArticles } from './useArticles.js'
 
 const services = [
   {
@@ -79,194 +67,18 @@ const steps = [
   },
 ]
 
-function Arrow({ light = false }) {
-  return (
-    <Box
-      component="span"
-      aria-hidden="true"
-      sx={{ ml: 1.25, color: light ? colors.cream : colors.green }}
-    >
-      ↗
-    </Box>
-  )
-}
-
 function App() {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const closeMenu = () => setMenuOpen(false)
+  const { articles, loading, error } = useArticles()
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.hash) {
+      document.getElementById(location.hash.slice(1))?.scrollIntoView()
+    }
+  }, [location.hash])
 
   return (
-    <Box
-      sx={{
-        minHeight: '100vh',
-        bgcolor: colors.cream,
-        color: colors.green,
-        fontFamily: 'Montserrat, Arial, sans-serif',
-      }}
-    >
-      <Box
-        component="header"
-        sx={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 1100,
-          bgcolor: colors.sage,
-          color: colors.green,
-          boxShadow: '0 2px 12px rgba(13,61,51,0.08)',
-        }}
-      >
-        <Container maxWidth="lg">
-          <Stack
-            direction="row"
-            sx={{
-              minHeight: { xs: 76, md: 91 },
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Box
-              component="a"
-              href="#anasayfa"
-              onClick={closeMenu}
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 1.5,
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              <Box
-                sx={{
-                  width: 43,
-                  height: 43,
-                  border: `1px solid ${colors.green}`,
-                  borderRadius: '50%',
-                  display: 'grid',
-                  placeItems: 'center',
-                  fontFamily: '"Cormorant Garamond", Georgia, serif',
-                  fontSize: 17,
-                  letterSpacing: '-1px',
-                }}
-              >
-                SY
-              </Box>
-              <Box>
-                <Typography
-                  sx={{
-                    fontFamily: '"Cormorant Garamond", Georgia, serif',
-                    fontSize: 20,
-                    lineHeight: 1,
-                  }}
-                >
-                  Selin Yılmaz
-                </Typography>
-                <Typography
-                  sx={{
-                    mt: 0.7,
-                    color: 'rgba(13,61,51,0.72)',
-                    fontSize: 9,
-                    letterSpacing: '1.1px',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  Klinik Psikolog
-                </Typography>
-              </Box>
-            </Box>
-
-            <Stack
-              component="nav"
-              aria-label="Ana navigasyon"
-              direction="row"
-              spacing={{ md: 3, lg: 4 }}
-              sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}
-            >
-              {links.map((link) => (
-                <Box
-                  key={link.href}
-                  component="a"
-                  href={link.href}
-                  sx={{
-                    color: 'rgba(13,61,51,0.86)',
-                    fontSize: 12,
-                    letterSpacing: '0.2px',
-                    textDecoration: 'none',
-                    transition: 'color 180ms ease',
-                    '&:hover': { color: colors.cream },
-                  }}
-                >
-                  {link.label}
-                </Box>
-              ))}
-              <Button
-                component="a"
-                href="#iletisim"
-                variant="outlined"
-                sx={{
-                  ml: 1,
-                  px: 2,
-                  py: 1,
-                  borderColor: 'rgba(13,61,51,0.55)',
-                  borderRadius: 0,
-                  color: colors.green,
-                  textTransform: 'none',
-                  fontSize: 12,
-                  '&:hover': {
-                    borderColor: colors.green,
-                    bgcolor: 'rgba(13,61,51,0.06)',
-                  },
-                }}
-              >
-                Randevu bilgisi <Arrow />
-              </Button>
-            </Stack>
-
-            <IconButton
-              aria-label={menuOpen ? 'Menüyü kapat' : 'Menüyü aç'}
-              aria-expanded={menuOpen}
-              onClick={() => setMenuOpen((open) => !open)}
-              sx={{
-                display: { xs: 'inline-flex', md: 'none' },
-                color: colors.green,
-                border: '1px solid rgba(13,61,51,0.45)',
-                borderRadius: 0,
-              }}
-            >
-              <Box component="span" sx={{ fontSize: 20, lineHeight: 1 }}>
-                {menuOpen ? '×' : '☰'}
-              </Box>
-            </IconButton>
-          </Stack>
-          {menuOpen && (
-            <Stack
-              component="nav"
-              aria-label="Mobil navigasyon"
-              spacing={0.5}
-              sx={{ display: { xs: 'flex', md: 'none' }, pb: 2.5 }}
-            >
-              {links.map((link) => (
-                <Box
-                  key={link.href}
-                  component="a"
-                  href={link.href}
-                  onClick={closeMenu}
-                  sx={{
-                    py: 1.3,
-                    borderBottom: '1px solid rgba(13,61,51,0.18)',
-                    color: colors.green,
-                    fontSize: 13,
-                    textDecoration: 'none',
-                  }}
-                >
-                  {link.label}
-                </Box>
-              ))}
-            </Stack>
-          )}
-        </Container>
-      </Box>
-
+    <SiteLayout>
       <Box
         component="main"
         sx={{ '& section': { scrollMarginTop: { xs: '84px', md: '100px' } } }}
@@ -948,6 +760,191 @@ function App() {
 
         <Box
           component="section"
+          id="yazilar"
+          sx={{ py: { xs: 8, md: 11 }, bgcolor: colors.sageLight }}
+        >
+          <Container maxWidth="lg">
+            <Stack
+              direction={{ xs: 'column', md: 'row' }}
+              sx={{
+                alignItems: { xs: 'flex-start', md: 'end' },
+                justifyContent: 'space-between',
+                gap: 2.5,
+                mb: { xs: 4, md: 5 },
+              }}
+            >
+              <Box>
+                <Typography
+                  sx={{
+                    mb: 1.25,
+                    color: colors.muted,
+                    fontSize: 9,
+                    letterSpacing: '1.7px',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  Notlar ve yazılar
+                </Typography>
+                <Typography
+                  component="h2"
+                  sx={{
+                    fontFamily: '"Cormorant Garamond", Georgia, serif',
+                    fontSize: { xs: 40, md: 52 },
+                    fontWeight: 400,
+                    lineHeight: 1.05,
+                  }}
+                >
+                  Terapiye dair yazılar
+                </Typography>
+              </Box>
+              <Typography
+                sx={{
+                  maxWidth: 350,
+                  color: colors.muted,
+                  fontSize: 13,
+                  lineHeight: 1.9,
+                }}
+              >
+                Terapi süreci, duygular ve ilişkiler üzerine paylaşım ve
+                bilgilendirme yazıları.
+              </Typography>
+            </Stack>
+
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' },
+                gap: { xs: 3, md: 2.5 },
+              }}
+            >
+              {loading && (
+                <Typography sx={{ gridColumn: '1 / -1', color: colors.muted }}>
+                  Yazılar yükleniyor...
+                </Typography>
+              )}
+              {error && (
+                <Alert severity="error" sx={{ gridColumn: '1 / -1' }}>
+                  Yazılar yüklenemedi: {error}
+                </Alert>
+              )}
+              {!loading && !error && articles.length === 0 && (
+                <Typography sx={{ gridColumn: '1 / -1', color: colors.muted }}>
+                  Henüz yayımlanmış yazı bulunmuyor.
+                </Typography>
+              )}
+              {articles.slice(0, 3).map((article) => {
+                return (
+                  <Box
+                    key={article.id}
+                    component="article"
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      p: { xs: 2, md: 2.5 },
+                      bgcolor: colors.cream,
+                      border: `1px solid ${colors.line}`,
+                    }}
+                  >
+                    <Box
+                      component="img"
+                      src={article.image}
+                      alt={article.imageAlt}
+                      loading="lazy"
+                      sx={{
+                        display: 'block',
+                        width: '100%',
+                        aspectRatio: '3 / 2',
+                        objectFit: 'cover',
+                        borderRadius: '4px',
+                        filter: 'saturate(0.82)',
+                      }}
+                    />
+                    <Stack
+                      direction="row"
+                      sx={{
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        mt: 2.5,
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          color: colors.green,
+                          fontSize: 9,
+                          letterSpacing: '1px',
+                          textTransform: 'uppercase',
+                        }}
+                      >
+                        {article.category}
+                      </Typography>
+                      <Typography sx={{ color: colors.muted, fontSize: 10 }}>
+                        {article.readingTime}
+                      </Typography>
+                    </Stack>
+                    <Typography
+                      component="h3"
+                      sx={{
+                        mt: 1.5,
+                        fontFamily: '"Cormorant Garamond", Georgia, serif',
+                        fontSize: 28,
+                        fontWeight: 500,
+                        lineHeight: 1.15,
+                      }}
+                    >
+                      {article.title}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        mt: 1,
+                        color: colors.muted,
+                        fontSize: 12,
+                        lineHeight: 1.85,
+                      }}
+                    >
+                      {article.excerpt}
+                    </Typography>
+                    <Button
+                      component={Link}
+                      to={`/yazilar/${article.id}`}
+                      sx={{
+                        alignSelf: 'flex-start',
+                        mt: 'auto',
+                        pt: 2,
+                        px: 0,
+                        color: colors.green,
+                        fontSize: 11,
+                        textTransform: 'none',
+                        '&:hover': { bgcolor: 'transparent', color: colors.muted },
+                      }}
+                    >
+                      Yazıyı oku
+                      <Arrow />
+                    </Button>
+                  </Box>
+                )
+              })}
+            </Box>
+            <Stack direction="row" sx={{ justifyContent: 'flex-end', mt: 2.5 }}>
+              <Button
+                component={Link}
+                to="/yazilar"
+                sx={{
+                  px: 0,
+                  color: colors.green,
+                  fontSize: 12,
+                  textTransform: 'none',
+                  '&:hover': { bgcolor: 'transparent', color: colors.muted },
+                }}
+              >
+                Tüm yazıları gör
+                <Arrow />
+              </Button>
+            </Stack>
+          </Container>
+        </Box>
+
+        <Box
+          component="section"
           id="surec"
           sx={{ py: { xs: 8, md: 11 }, bgcolor: colors.green, color: colors.cream }}
         >
@@ -1114,123 +1111,7 @@ function App() {
         </Box>
       </Box>
 
-      <Box
-        component="footer"
-        sx={{ bgcolor: colors.green, color: colors.cream, pt: { xs: 5, md: 6 } }}
-      >
-        <Container maxWidth="lg">
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr 1fr', md: '1.5fr 1fr 1fr 1.2fr' },
-              gap: { xs: 4, md: 5 },
-              pb: 4,
-            }}
-          >
-            <Box sx={{ gridColumn: { xs: '1 / -1', md: 'auto' } }}>
-              <Typography
-                sx={{
-                  fontFamily: '"Cormorant Garamond", Georgia, serif',
-                  fontSize: 27,
-                }}
-              >
-                Selin Yılmaz
-              </Typography>
-              <Typography
-                sx={{
-                  mt: 0.5,
-                  color: 'rgba(247,246,241,0.68)',
-                  fontSize: 9,
-                  letterSpacing: '1px',
-                  textTransform: 'uppercase',
-                }}
-              >
-                Klinik Psikolog · Psikoterapi
-              </Typography>
-            </Box>
-            <Box>
-              <Typography sx={{ mb: 1.5, color: colors.sage, fontSize: 10, letterSpacing: '1px' }}>
-                KEŞFEDİN
-              </Typography>
-              <Stack spacing={1}>
-                {links.slice(0, 3).map((link) => (
-                  <Box
-                    key={link.href}
-                    component="a"
-                    href={link.href}
-                    sx={{
-                      color: 'rgba(247,246,241,0.76)',
-                      fontSize: 11,
-                      textDecoration: 'none',
-                      '&:hover': { color: colors.sage },
-                    }}
-                  >
-                    {link.label}
-                  </Box>
-                ))}
-              </Stack>
-            </Box>
-            <Box>
-              <Typography sx={{ mb: 1.5, color: colors.sage, fontSize: 10, letterSpacing: '1px' }}>
-                GÖRÜŞMELER
-              </Typography>
-              <Stack spacing={1}>
-                <Typography sx={{ color: 'rgba(247,246,241,0.76)', fontSize: 11 }}>
-                  Yüz yüze görüşme
-                </Typography>
-                <Typography sx={{ color: 'rgba(247,246,241,0.76)', fontSize: 11 }}>
-                  Online görüşme
-                </Typography>
-                <Typography sx={{ color: 'rgba(247,246,241,0.76)', fontSize: 11 }}>
-                  Randevu için iletişim
-                </Typography>
-              </Stack>
-            </Box>
-            <Box>
-              <Typography sx={{ mb: 1.5, color: colors.sage, fontSize: 10, letterSpacing: '1px' }}>
-                İLETİŞİM
-              </Typography>
-              <Typography sx={{ color: 'rgba(247,246,241,0.76)', fontSize: 11, lineHeight: 1.8 }}>
-                Randevu ve bilgi için
-                <br />
-                e-posta yoluyla ulaşabilirsiniz.
-              </Typography>
-              <Box
-                component="a"
-                href="mailto:merhaba@selinyilmaz.com"
-                sx={{
-                  display: 'inline-block',
-                  mt: 1,
-                  color: colors.cream,
-                  fontSize: 11,
-                  textDecorationColor: colors.sage,
-                  textUnderlineOffset: 3,
-                }}
-              >
-                E-posta gönder
-              </Box>
-            </Box>
-          </Box>
-          <Stack
-            direction={{ xs: 'column', sm: 'row' }}
-            sx={{
-              minHeight: 56,
-              alignItems: { xs: 'flex-start', sm: 'center' },
-              justifyContent: 'space-between',
-              gap: 1,
-              borderTop: '1px solid rgba(247,246,241,0.2)',
-            }}
-          >
-            <Typography sx={{ color: 'rgba(247,246,241,0.58)', fontSize: 9 }}>
-              © {new Date().getFullYear()} Selin Yılmaz
-            </Typography>
-            <Typography sx={{ color: 'rgba(247,246,241,0.58)', fontSize: 9 }}>
-              Bu site bilgilendirme amaçlıdır.
-            </Typography>
-          </Stack>
-        </Container>
-      </Box>
-    </Box>
+    </SiteLayout>
   )
 }
 
