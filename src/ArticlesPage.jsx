@@ -22,7 +22,7 @@ function ArticlesPage() {
             sx={{
               mb: 1.25,
               color: colors.muted,
-              fontSize: 9,
+              fontSize: 11,
               letterSpacing: '1.7px',
               textTransform: 'uppercase',
             }}
@@ -45,7 +45,7 @@ function ArticlesPage() {
               maxWidth: 480,
               mt: 1.75,
               color: colors.muted,
-              fontSize: 13,
+              fontSize: 16,
               lineHeight: 1.9,
             }}
           >
@@ -106,7 +106,7 @@ function ArticlesPage() {
                     <Typography
                       sx={{
                         color: colors.green,
-                        fontSize: 9,
+                        fontSize: 11,
                         letterSpacing: '1px',
                         textTransform: 'uppercase',
                       }}
@@ -114,7 +114,7 @@ function ArticlesPage() {
                       {article.category}
                     </Typography>
                     <Typography
-                      sx={{ flexShrink: 0, color: colors.muted, fontSize: 10 }}
+                      sx={{ flexShrink: 0, color: colors.muted, fontSize: 12 }}
                     >
                       {article.readingTime}
                     </Typography>
@@ -135,7 +135,7 @@ function ArticlesPage() {
                     sx={{
                       mt: 1,
                       color: colors.muted,
-                      fontSize: 12,
+                      fontSize: 15,
                       lineHeight: 1.85,
                     }}
                   >
@@ -149,7 +149,7 @@ function ArticlesPage() {
                       pt: 2,
                       px: 0,
                       color: colors.green,
-                      fontSize: 11,
+                      fontSize: 14,
                       textTransform: 'none',
                       '&:hover': {
                         bgcolor: 'transparent',

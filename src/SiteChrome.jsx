@@ -96,7 +96,7 @@ function SiteHeader() {
                 sx={{
                   mt: 0.7,
                   color: 'rgba(13,61,51,0.72)',
-                  fontSize: 9,
+                  fontSize: 11,
                   letterSpacing: '1.1px',
                   textTransform: 'uppercase',
                 }}
@@ -120,7 +120,7 @@ function SiteHeader() {
                 to={link.to}
                 sx={{
                   color: 'rgba(13,61,51,0.86)',
-                  fontSize: 12,
+                  fontSize: 14,
                   letterSpacing: '0.2px',
                   textDecoration: 'none',
                   transition: 'color 180ms ease',
@@ -142,7 +142,7 @@ function SiteHeader() {
                 borderRadius: 0,
                 color: colors.green,
                 textTransform: 'none',
-                fontSize: 12,
+                fontSize: 14,
                 '&:hover': {
                   borderColor: colors.green,
                   bgcolor: 'rgba(13,61,51,0.06)',
@@ -186,7 +186,7 @@ function SiteHeader() {
                   py: 1.3,
                   borderBottom: '1px solid rgba(13,61,51,0.18)',
                   color: colors.green,
-                  fontSize: 13,
+                  fontSize: 15,
                   textDecoration: 'none',
                 }}
               >
@@ -228,7 +228,7 @@ function SiteFooter() {
               sx={{
                 mt: 0.5,
                 color: 'rgba(247,246,241,0.68)',
-                fontSize: 9,
+                fontSize: 11,
                 letterSpacing: '1px',
                 textTransform: 'uppercase',
               }}
@@ -241,7 +241,7 @@ function SiteFooter() {
               sx={{
                 mb: 1.5,
                 color: colors.sage,
-                fontSize: 10,
+                fontSize: 12,
                 letterSpacing: '1px',
               }}
             >
@@ -255,7 +255,7 @@ function SiteFooter() {
                   to={link.to}
                   sx={{
                     color: 'rgba(247,246,241,0.76)',
-                    fontSize: 11,
+                    fontSize: 13,
                     textDecoration: 'none',
                     '&:hover': { color: colors.sage },
                   }}
@@ -270,20 +270,20 @@ function SiteFooter() {
               sx={{
                 mb: 1.5,
                 color: colors.sage,
-                fontSize: 10,
+                fontSize: 12,
                 letterSpacing: '1px',
               }}
             >
               GÖRÜŞMELER
             </Typography>
             <Stack spacing={1}>
-              <Typography sx={{ color: 'rgba(247,246,241,0.76)', fontSize: 11 }}>
+              <Typography sx={{ color: 'rgba(247,246,241,0.76)', fontSize: 13 }}>
                 Yüz yüze görüşme
               </Typography>
-              <Typography sx={{ color: 'rgba(247,246,241,0.76)', fontSize: 11 }}>
+              <Typography sx={{ color: 'rgba(247,246,241,0.76)', fontSize: 13 }}>
                 Online görüşme
               </Typography>
-              <Typography sx={{ color: 'rgba(247,246,241,0.76)', fontSize: 11 }}>
+              <Typography sx={{ color: 'rgba(247,246,241,0.76)', fontSize: 13 }}>
                 Randevu için iletişim
               </Typography>
             </Stack>
@@ -293,7 +293,7 @@ function SiteFooter() {
               sx={{
                 mb: 1.5,
                 color: colors.sage,
-                fontSize: 10,
+                fontSize: 12,
                 letterSpacing: '1px',
               }}
             >
@@ -302,7 +302,7 @@ function SiteFooter() {
             <Typography
               sx={{
                 color: 'rgba(247,246,241,0.76)',
-                fontSize: 11,
+                fontSize: 13,
                 lineHeight: 1.8,
               }}
             >
@@ -317,7 +317,7 @@ function SiteFooter() {
                 display: 'inline-block',
                 mt: 1,
                 color: colors.cream,
-                fontSize: 11,
+                fontSize: 13,
                 textDecorationColor: colors.sage,
                 textUnderlineOffset: 3,
               }}
@@ -336,10 +336,10 @@ function SiteFooter() {
             borderTop: '1px solid rgba(247,246,241,0.2)',
           }}
         >
-          <Typography sx={{ color: 'rgba(247,246,241,0.58)', fontSize: 9 }}>
+          <Typography sx={{ color: 'rgba(247,246,241,0.58)', fontSize: 11 }}>
             © {new Date().getFullYear()} Selin Yılmaz
           </Typography>
-          <Typography sx={{ color: 'rgba(247,246,241,0.58)', fontSize: 9 }}>
+          <Typography sx={{ color: 'rgba(247,246,241,0.58)', fontSize: 11 }}>
             Bu site bilgilendirme amaçlıdır.
           </Typography>
         </Stack>

@@ -12,7 +12,6 @@ import {
   Typography,
 } from '@mui/material'
 import { supabase } from './supabase.js'
-import { SiteLayout } from './SiteChrome.jsx'
 import { colors } from './theme.js'
 import { mapArticle } from './useArticles.js'
 
@@ -309,7 +308,9 @@ function AdminPage() {
       image_alt: selectedArticle.imageAlt.trim(),
       reading_time: selectedArticle.readingTime.trim(),
       excerpt: selectedArticle.excerpt.trim(),
-      paragraphs: selectedArticle.paragraphs,
+      paragraphs: selectedArticle.paragraphs
+        .map((paragraph) => paragraph.trim())
+        .filter(Boolean),
       published: selectedArticle.published,
       updated_at: new Date().toISOString(),
     }
@@ -446,15 +447,48 @@ function AdminPage() {
   }
 
   return (
-    <SiteLayout>
-      <Box component="main" sx={{ flexGrow: 1, py: { xs: 5, md: 8 } }}>
-        <Container maxWidth="lg">
+    <Box
+      component="main"
+      sx={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 1300,
+        display: 'flex',
+        width: '100%',
+        height: '100dvh',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        bgcolor: colors.cream,
+      }}
+    >
+      <Container
+        maxWidth="lg"
+        sx={{
+          height: '100%',
+          minHeight: 0,
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            width: '100%',
+            height: '100%',
+            minHeight: 0,
+            flexDirection: 'column',
+            alignItems: isAdmin ? 'stretch' : 'center',
+            justifyContent: isAdmin ? 'flex-start' : 'center',
+            overflow: 'hidden',
+            py: isAdmin ? { xs: 2, md: 3 } : 0,
+          }}
+        >
           <Typography
             sx={{
               color: colors.muted,
-              fontSize: 9,
+              fontSize: 11,
               letterSpacing: '1.7px',
               textTransform: 'uppercase',
+              textAlign: isAdmin ? 'left' : 'center',
             }}
           >
             İçerik yönetimi
@@ -466,6 +500,7 @@ function AdminPage() {
               fontFamily: '"Cormorant Garamond", Georgia, serif',
               fontSize: { xs: 40, md: 52 },
               fontWeight: 400,
+              textAlign: isAdmin ? 'left' : 'center',
             }}
           >
             Blog yazıları
@@ -493,7 +528,9 @@ function AdminPage() {
                 display: 'grid',
                 gap: 2,
                 maxWidth: 440,
+                width: '100%',
                 mt: 3,
+                mx: 'auto',
                 p: { xs: 2.5, md: 3 },
                 border: `1px solid ${colors.line}`,
                 bgcolor: colors.sageLight,
@@ -566,13 +603,23 @@ function AdminPage() {
           {isAdmin && (
             <Box
               sx={{
+                flex: 1,
+                minHeight: 0,
+                overflow: 'hidden',
                 display: 'grid',
                 gridTemplateColumns: { xs: '1fr', md: '280px minmax(0, 1fr)' },
+                gridTemplateRows: {
+                  xs: 'minmax(0, 1fr) minmax(0, 2fr)',
+                  md: 'minmax(0, 1fr)',
+                },
                 gap: { xs: 3, md: 4 },
                 mt: 3,
               }}
             >
-              <Stack spacing={1.5}>
+              <Stack
+                spacing={1.5}
+                sx={{ minHeight: 0, overflowY: 'auto', pr: 1 }}
+              >
                 <Button
                   onClick={handleAddArticle}
                   variant="outlined"
@@ -647,7 +694,10 @@ function AdminPage() {
                   Yazılar yükleniyor...
                 </Typography>
               ) : selectedArticle ? (
-                <Stack spacing={2}>
+                <Stack
+                  spacing={2}
+                  sx={{ minHeight: 0, overflowY: 'auto', pr: 1 }}
+                >
                   {error && <Alert severity="error">{error}</Alert>}
                   {notice && <Alert severity="success">{notice}</Alert>}
                   <TextField
@@ -697,9 +747,7 @@ function AdminPage() {
                     onChange={(event) =>
                       updateSelectedArticle(
                         'paragraphs',
-                        event.target.value
-                          .split(/\n\s*\n/)
-                          .map((paragraph) => paragraph.trim()),
+                        event.target.value.split(/\n\s*\n/),
                       )
                     }
                     multiline
@@ -826,9 +874,9 @@ function AdminPage() {
               )}
             </Box>
           )}
-        </Container>
-      </Box>
-    </SiteLayout>
+        </Box>
+      </Container>
+    </Box>
   )
 }
 

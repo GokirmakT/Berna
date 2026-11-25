@@ -32,26 +32,11 @@ function ArticlePage() {
             <Alert severity="error">Yazı yüklenemedi: {error}</Alert>
           </Container>
         )}
-        {article && <Container maxWidth="md">
-          <Button
-            component={Link}
-            to="/yazilar"
-            sx={{
-              mb: { xs: 3, md: 4 },
-              px: 0,
-              color: colors.green,
-              fontSize: 12,
-              textTransform: 'none',
-              '&:hover': { bgcolor: 'transparent', color: colors.muted },
-            }}
-          >
-            ← Tüm yazılar
-          </Button>
-
+        {article && <Container maxWidth="md" sx={{ overflowWrap: 'anywhere' }}>
           <Typography
             sx={{
               color: colors.muted,
-              fontSize: 10,
+              fontSize: 12,
               letterSpacing: '1.4px',
               textTransform: 'uppercase',
             }}
@@ -74,7 +59,7 @@ function ArticlePage() {
             sx={{
               mt: 2,
               color: colors.muted,
-              fontSize: { xs: 14, md: 16 },
+              fontSize: { xs: 16, md: 18 },
               lineHeight: 1.9,
             }}
           >
@@ -102,8 +87,9 @@ function ArticlePage() {
                 sx={{
                   mb: 2.5,
                   color: colors.muted,
-                  fontSize: { xs: 14, md: 16 },
+                  fontSize: { xs: 16, md: 18 },
                   lineHeight: 2,
+                  whiteSpace: 'pre-line',
                 }}
               >
                 {paragraph}
@@ -125,29 +111,11 @@ function ArticlePage() {
                 borderColor: colors.green,
                 borderRadius: 0,
                 color: colors.green,
-                fontSize: 12,
+                fontSize: 14,
                 textTransform: 'none',
               }}
             >
               Diğer yazılar
-            </Button>
-            <Button
-              component={Link}
-              to="/#iletisim"
-              variant="contained"
-              disableElevation
-              sx={{
-                px: 2.5,
-                py: 1.25,
-                bgcolor: colors.green,
-                borderRadius: 0,
-                color: colors.cream,
-                fontSize: 12,
-                textTransform: 'none',
-                '&:hover': { bgcolor: '#145246' },
-              }}
-            >
-              İletişim
             </Button>
           </Stack>
         </Container>}

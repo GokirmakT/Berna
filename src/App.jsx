@@ -114,7 +114,7 @@ function App() {
                   <Typography
                     sx={{
                       color: colors.sage,
-                      fontSize: 10,
+                      fontSize: 12,
                       letterSpacing: '2px',
                       textTransform: 'uppercase',
                     }}
@@ -145,7 +145,7 @@ function App() {
                     maxWidth: 420,
                     mt: 2.5,
                     color: 'rgba(247,246,241,0.78)',
-                    fontSize: { xs: 14, sm: 15 },
+                    fontSize: { xs: 16, sm: 17 },
                     lineHeight: 1.9,
                   }}
                 >
@@ -173,7 +173,7 @@ function App() {
                       borderRadius: 0,
                       color: colors.green,
                       textTransform: 'none',
-                      fontSize: 12,
+                      fontSize: 14,
                       '&:hover': { bgcolor: '#c4dbc9' },
                     }}
                   >
@@ -188,7 +188,7 @@ function App() {
                       justifyContent: 'flex-start',
                       color: colors.cream,
                       textTransform: 'none',
-                      fontSize: 12,
+                      fontSize: 14,
                       '&:hover': { bgcolor: 'transparent', color: colors.sage },
                     }}
                   >
@@ -252,14 +252,14 @@ function App() {
                   <Typography
                     sx={{
                       color: colors.green,
-                      fontSize: 9,
+                      fontSize: 11,
                       letterSpacing: '1px',
                       textTransform: 'uppercase',
                     }}
                   >
                     Görüşme biçimi
                   </Typography>
-                  <Typography sx={{ mt: 0.6, fontSize: 12, fontWeight: 600 }}>
+                  <Typography sx={{ mt: 0.6, fontSize: 14, fontWeight: 600 }}>
                     Yüz yüze ve online
                   </Typography>
                 </Paper>
@@ -311,13 +311,13 @@ function App() {
                   <Typography
                     sx={{
                       fontFamily: '"Cormorant Garamond", Georgia, serif',
-                      fontSize: 13,
+                      fontSize: 14,
                       fontStyle: 'italic',
                     }}
                   >
                     0{index + 1}
                   </Typography>
-                  <Typography sx={{ fontSize: 11, letterSpacing: '0.25px' }}>
+                  <Typography sx={{ fontSize: 13, letterSpacing: '0.25px' }}>
                     {text}
                   </Typography>
                 </Stack>
@@ -381,7 +381,7 @@ function App() {
                 >
                   <Typography
                     sx={{
-                      fontSize: 9,
+                      fontSize: 11,
                       letterSpacing: '1.2px',
                       textTransform: 'uppercase',
                     }}
@@ -391,7 +391,7 @@ function App() {
                   <Typography
                     sx={{
                       mt: 0.4,
-                      fontSize: 12,
+                      fontSize: 14,
                       fontWeight: 600,
                     }}
                   >
@@ -405,7 +405,7 @@ function App() {
                   sx={{
                     mb: 1.5,
                     color: colors.muted,
-                    fontSize: 9,
+                    fontSize: 11,
                     letterSpacing: '1.7px',
                     textTransform: 'uppercase',
                   }}
@@ -428,7 +428,7 @@ function App() {
                   sx={{
                     mt: 2.5,
                     color: colors.muted,
-                    fontSize: 14,
+                    fontSize: 16,
                     lineHeight: 2,
                   }}
                 >
@@ -440,7 +440,7 @@ function App() {
                   sx={{
                     mt: 1.5,
                     color: colors.muted,
-                    fontSize: 14,
+                    fontSize: 16,
                     lineHeight: 2,
                   }}
                 >
@@ -456,7 +456,7 @@ function App() {
                     mt: 2.5,
                     p: 0,
                     color: colors.green,
-                    fontSize: 13,
+                    fontSize: 15,
                     textTransform: 'none',
                     '&:hover': { bgcolor: 'transparent', color: colors.muted },
                   }}
@@ -502,7 +502,7 @@ function App() {
                   sx={{
                     mb: 1,
                     color: colors.muted,
-                    fontSize: 9,
+                    fontSize: 11,
                     letterSpacing: '1.8px',
                     textTransform: 'uppercase',
                   }}
@@ -522,19 +522,19 @@ function App() {
                   Selin Yılmaz
                 </Typography>
                 <Typography
-                  sx={{ color: colors.green, fontSize: 14, fontWeight: 600, lineHeight: 1.8 }}
+                  sx={{ color: colors.green, fontSize: 16, fontWeight: 600, lineHeight: 1.8 }}
                 >
                   Yetişkinlerle bireysel terapi görüşmeleri yürütüyorum.
                 </Typography>
                 <Typography
-                  sx={{ mt: 1.75, color: colors.muted, fontSize: 13, lineHeight: 1.9 }}
+                  sx={{ mt: 1.75, color: colors.muted, fontSize: 16, lineHeight: 1.9 }}
                 >
                   Görüşmelerde kaygı, stres, ilişkiler ve öz farkındalık konuları
                   ele alınır. Çalışma hedefleri, danışanın başvuru nedeni ve
                   ihtiyaçları doğrultusunda belirlenir.
                 </Typography>
                 <Typography
-                  sx={{ mt: 1.5, color: colors.muted, fontSize: 13, lineHeight: 1.9 }}
+                  sx={{ mt: 1.5, color: colors.muted, fontSize: 16, lineHeight: 1.9 }}
                 >
                   Terapi sürecini mesleki etik ilkeler ve bilimsel bilgi
                   doğrultusunda yürütüyorum. Görüşmeler yüz yüze veya online
@@ -554,14 +554,14 @@ function App() {
                       sx={{
                         mb: 0.5,
                         color: colors.muted,
-                        fontSize: 9,
+                        fontSize: 11,
                         letterSpacing: '1px',
                         textTransform: 'uppercase',
                       }}
                     >
                       Çalışma alanları
                     </Typography>
-                    <Typography sx={{ fontSize: 11, lineHeight: 1.7 }}>
+                    <Typography sx={{ fontSize: 13, lineHeight: 1.7 }}>
                       Bireysel terapi · Kaygı ve stres · İlişkiler
                     </Typography>
                   </Box>
@@ -570,14 +570,14 @@ function App() {
                       sx={{
                         mb: 0.5,
                         color: colors.muted,
-                        fontSize: 9,
+                        fontSize: 11,
                         letterSpacing: '1px',
                         textTransform: 'uppercase',
                       }}
                     >
                       Görüşme biçimi
                     </Typography>
-                    <Typography sx={{ fontSize: 11, lineHeight: 1.7 }}>
+                    <Typography sx={{ fontSize: 13, lineHeight: 1.7 }}>
                       Yüz yüze ve online
                     </Typography>
                   </Box>
@@ -590,7 +590,7 @@ function App() {
                     mt: 2.5,
                     p: 0,
                     color: colors.green,
-                    fontSize: 12,
+                    fontSize: 14,
                     textTransform: 'none',
                     '&:hover': { bgcolor: 'transparent', color: colors.muted },
                   }}
@@ -618,7 +618,7 @@ function App() {
                   sx={{
                     mb: 1.25,
                     color: colors.muted,
-                    fontSize: 9,
+                    fontSize: 11,
                     letterSpacing: '1.7px',
                     textTransform: 'uppercase',
                   }}
@@ -641,7 +641,7 @@ function App() {
                 sx={{
                   maxWidth: 350,
                   color: colors.muted,
-                  fontSize: 13,
+                  fontSize: 16,
                   lineHeight: 1.9,
                 }}
               >
@@ -735,7 +735,7 @@ function App() {
                       minHeight: { md: 82 },
                       mt: 1,
                       color: colors.muted,
-                      fontSize: 11,
+                      fontSize: 14,
                       lineHeight: 1.9,
                     }}
                   >
@@ -745,7 +745,7 @@ function App() {
                     sx={{
                       mt: 2,
                       color: colors.green,
-                      fontSize: 10,
+                      fontSize: 12,
                       letterSpacing: '1px',
                       textTransform: 'uppercase',
                     }}
@@ -778,7 +778,7 @@ function App() {
                   sx={{
                     mb: 1.25,
                     color: colors.muted,
-                    fontSize: 9,
+                    fontSize: 11,
                     letterSpacing: '1.7px',
                     textTransform: 'uppercase',
                   }}
@@ -801,7 +801,7 @@ function App() {
                 sx={{
                   maxWidth: 350,
                   color: colors.muted,
-                  fontSize: 13,
+                  fontSize: 16,
                   lineHeight: 1.9,
                 }}
               >
@@ -870,14 +870,14 @@ function App() {
                       <Typography
                         sx={{
                           color: colors.green,
-                          fontSize: 9,
+                          fontSize: 11,
                           letterSpacing: '1px',
                           textTransform: 'uppercase',
                         }}
                       >
                         {article.category}
                       </Typography>
-                      <Typography sx={{ color: colors.muted, fontSize: 10 }}>
+                      <Typography sx={{ color: colors.muted, fontSize: 12 }}>
                         {article.readingTime}
                       </Typography>
                     </Stack>
@@ -897,7 +897,7 @@ function App() {
                       sx={{
                         mt: 1,
                         color: colors.muted,
-                        fontSize: 12,
+                        fontSize: 15,
                         lineHeight: 1.85,
                       }}
                     >
@@ -912,7 +912,7 @@ function App() {
                         pt: 2,
                         px: 0,
                         color: colors.green,
-                        fontSize: 11,
+                        fontSize: 14,
                         textTransform: 'none',
                         '&:hover': { bgcolor: 'transparent', color: colors.muted },
                       }}
@@ -931,7 +931,7 @@ function App() {
                 sx={{
                   px: 0,
                   color: colors.green,
-                  fontSize: 12,
+                  fontSize: 14,
                   textTransform: 'none',
                   '&:hover': { bgcolor: 'transparent', color: colors.muted },
                 }}
@@ -963,7 +963,7 @@ function App() {
                   sx={{
                     mb: 1.25,
                     color: colors.sage,
-                    fontSize: 9,
+                    fontSize: 11,
                     letterSpacing: '1.8px',
                     textTransform: 'uppercase',
                   }}
@@ -1031,7 +1031,7 @@ function App() {
                     sx={{
                       mt: 1,
                       color: 'rgba(247,246,241,0.7)',
-                      fontSize: 13,
+                      fontSize: 16,
                       lineHeight: 1.9,
                     }}
                   >
@@ -1056,7 +1056,7 @@ function App() {
             <Typography
               sx={{
                 color: colors.green,
-                fontSize: 9,
+                fontSize: 11,
                 letterSpacing: '1.7px',
                 textTransform: 'uppercase',
               }}
@@ -1081,7 +1081,7 @@ function App() {
                 mx: 'auto',
                 mt: 1.75,
                 color: 'rgba(13,61,51,0.78)',
-                fontSize: 13,
+                fontSize: 16,
                 lineHeight: 1.9,
               }}
             >
@@ -1101,7 +1101,7 @@ function App() {
                 borderRadius: 0,
                 color: colors.cream,
                 textTransform: 'none',
-                fontSize: 13,
+                fontSize: 15,
                 '&:hover': { bgcolor: '#145246' },
               }}
             >
