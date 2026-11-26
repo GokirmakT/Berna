@@ -18,7 +18,9 @@ const links = [
   { label: 'İletişim', to: '/#iletisim' },
 ]
 
-const contactEmailHref = `mailto:gokirmak.teoman@gmail.com?subject=${encodeURIComponent(
+const contactEmailHref = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+  'gokirmak.teoman@gmail.com',
+)}&su=${encodeURIComponent(
   'Randevu ve bilgi talebi',
 )}&body=${encodeURIComponent(
   'Merhaba,\n\nRandevu ve görüşme seçenekleri hakkında bilgi almak istiyorum.\n\nAd Soyad:\nTelefon:\n\nİyi günler.',
@@ -319,6 +321,8 @@ function SiteFooter() {
             <Box
               component="a"
               href={contactEmailHref}
+              target="_blank"
+              rel="noopener noreferrer"
               sx={{
                 display: 'inline-block',
                 mt: 1,

@@ -1088,6 +1088,8 @@ function App() {
             <Button
               component="a"
               href={contactEmailHref}
+              target="_blank"
+              rel="noopener noreferrer"
               variant="contained"
               disableElevation
               sx={{
