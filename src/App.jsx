@@ -9,7 +9,7 @@ import {
   Typography,
 } from '@mui/material'
 import { Link, useLocation } from 'react-router-dom'
-import { Arrow, SiteLayout } from './SiteChrome.jsx'
+import { Arrow, SiteLayout, contactEmailHref } from './SiteChrome.jsx'
 import ArticleImage from './ArticleImage.jsx'
 import { colors } from './theme.js'
 import { useArticles } from './useArticles.js'
@@ -1087,7 +1087,7 @@ function App() {
             </Typography>
             <Button
               component="a"
-              href="mailto:merhaba@selinyilmaz.com"
+              href={contactEmailHref}
               variant="contained"
               disableElevation
               sx={{

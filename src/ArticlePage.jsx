@@ -9,6 +9,7 @@ import {
 import { Link, useParams } from 'react-router-dom'
 import { SiteLayout } from './SiteChrome.jsx'
 import ArticleImage from './ArticleImage.jsx'
+import LoadingScreen from './LoadingScreen.jsx'
 import { colors } from './theme.js'
 import { useArticle } from './useArticles.js'
 
@@ -25,7 +26,7 @@ function ArticlePage() {
       <Box component="main" sx={{ flexGrow: 1, py: { xs: 5, md: 9 } }}>
         {loading && (
           <Container maxWidth="md">
-            <Typography sx={{ color: colors.muted }}>Yazı yükleniyor...</Typography>
+            <LoadingScreen label="Yazı yükleniyor" />
           </Container>
         )}
         {error && (

@@ -18,6 +18,12 @@ const links = [
   { label: 'İletişim', to: '/#iletisim' },
 ]
 
+const contactEmailHref = `mailto:gokirmak.teoman@gmail.com?subject=${encodeURIComponent(
+  'Randevu ve bilgi talebi',
+)}&body=${encodeURIComponent(
+  'Merhaba,\n\nRandevu ve görüşme seçenekleri hakkında bilgi almak istiyorum.\n\nAd Soyad:\nTelefon:\n\nİyi günler.',
+)}`
+
 function Arrow({ light = false }) {
   return (
     <Box
@@ -312,7 +318,7 @@ function SiteFooter() {
             </Typography>
             <Box
               component="a"
-              href="mailto:merhaba@selinyilmaz.com"
+              href={contactEmailHref}
               sx={{
                 display: 'inline-block',
                 mt: 1,
@@ -367,4 +373,4 @@ function SiteLayout({ children }) {
   )
 }
 
-export { Arrow, SiteLayout }
+export { Arrow, SiteLayout, contactEmailHref }

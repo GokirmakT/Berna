@@ -9,6 +9,7 @@ import {
 import { Link } from 'react-router-dom'
 import { SiteLayout } from './SiteChrome.jsx'
 import ArticleImage from './ArticleImage.jsx'
+import LoadingScreen from './LoadingScreen.jsx'
 import { colors } from './theme.js'
 import { useArticles } from './useArticles.js'
 
@@ -54,11 +55,7 @@ function ArticlesPage() {
           </Typography>
 
           <Stack spacing={{ xs: 2, md: 2.5 }} sx={{ mt: { xs: 4, md: 5 } }}>
-            {loading && (
-              <Typography sx={{ color: colors.muted }}>
-                Yazılar yükleniyor...
-              </Typography>
-            )}
+            {loading && <LoadingScreen label="Yazılar yükleniyor" />}
             {error && (
               <Alert severity="error">Yazılar yüklenemedi: {error}</Alert>
             )}
