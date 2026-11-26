@@ -20,7 +20,8 @@ anahtarını frontend ortam değişkenlerine veya kaynak koda koymayın.
 
 1. Supabase Dashboard > SQL Editor'da `supabase/setup.sql` dosyasının tamamını
    çalıştırın. Bu, blog tablosunu, RLS kurallarını ve `blog-images` Storage
-   bucket'ını oluşturur; mevcut örnek yazıları da ekler.
+   bucket'ını oluşturur; mevcut örnek yazıları da ekler. Yeni sürümlerdeki
+   değişiklikleri mevcut projeye uygulamak için bu dosyayı yeniden çalıştırın.
 2. Authentication > Users bölümünden admin için bir e-posta/şifre hesabı oluşturun.
    İsterseniz herkese açık kayıt olmayı Auth ayarlarından kapatın.
 3. Admin kullanıcısının UUID'sini kopyalayıp SQL Editor'da aşağıdaki sorguyu
@@ -32,8 +33,9 @@ anahtarını frontend ortam değişkenlerine veya kaynak koda koymayın.
    ```
 
 4. Siteyi açıp `/admin` adresinden bu hesapla giriş yapın. Panelden yazı
-   oluşturabilir, taslakta tutabilir, yayımlayabilir, silebilir ve görsel
-   yükleyebilirsiniz.
+   oluşturabilir, taslakta tutabilir, yayımlayabilir, ana sayfada sabitleyebilir,
+   silebilir ve görsel yükleyebilirsiniz. Ana sayfadaki yazılar sabitlenenler önce
+   olacak şekilde, kendi grupları içinde yayın tarihine göre yeniden eskiye sıralanır.
 
 Yayımlanmış yazılar `/yazilar` listesinde ve `/yazilar/:slug` detay sayfalarında
 görünür. Blog görselleri herkese açık okunabilir; yükleme ve silme işlemleri

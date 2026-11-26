@@ -11,9 +11,13 @@ create table if not exists public.articles (
   paragraphs jsonb not null default '[]'::jsonb
     check (jsonb_typeof(paragraphs) = 'array'),
   published boolean not null default false,
+  pinned boolean not null default false,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+alter table public.articles
+  add column if not exists pinned boolean not null default false;
 
 create table if not exists public.admin_users (
   user_id uuid primary key references auth.users(id) on delete cascade
@@ -227,5 +231,6 @@ values
 on conflict (slug) do nothing;
 
 -- Supabase Auth'ta admin hesabı oluşturduktan sonra kullanıcı UUID'sini ekleyin:
- insert into public.admin_users (user_id)
- values ('5976b94f-21f2-4df1-881e-50772ef59028');
+insert into public.admin_users (user_id)
+values ('5976b94f-21f2-4df1-881e-50772ef59028')
+on conflict (user_id) do nothing;

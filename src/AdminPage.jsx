@@ -272,6 +272,8 @@ function AdminPage() {
       excerpt: '',
       paragraphs: [''],
       published: false,
+      createdAt: '',
+      pinned: false,
     }
 
     setArticles((current) => [...current, newArticle])
@@ -312,6 +314,8 @@ function AdminPage() {
         .map((paragraph) => paragraph.trim())
         .filter(Boolean),
       published: selectedArticle.published,
+      pinned: selectedArticle.pinned,
+      created_at: selectedArticle.createdAt || new Date().toISOString(),
       updated_at: new Date().toISOString(),
     }
 
@@ -673,6 +677,7 @@ function AdminPage() {
                       >
                         {article.title || 'Başlıksız yazı'}
                         {!article.published && ' · Taslak'}
+                        {article.pinned && ' · Sabit'}
                       </Button>
                     )
                   })}
@@ -823,15 +828,30 @@ function AdminPage() {
                     control={
                       <Switch
                         checked={selectedArticle.published}
-                        onChange={(event) =>
-                          updateSelectedArticle(
-                            'published',
-                            event.target.checked,
-                          )
-                        }
+                        onChange={(event) => {
+                          const published = event.target.checked
+                          updateSelectedArticle('published', published)
+                          if (published && !selectedArticle.published) {
+                            updateSelectedArticle(
+                              'createdAt',
+                              new Date().toISOString(),
+                            )
+                          }
+                        }}
                       />
                     }
                     label="Yayımla"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        checked={selectedArticle.pinned}
+                        onChange={(event) =>
+                          updateSelectedArticle('pinned', event.target.checked)
+                        }
+                      />
+                    }
+                    label="Ana sayfada sabitle"
                   />
                   <Stack
                     direction={{ xs: 'column-reverse', sm: 'row' }}

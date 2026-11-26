@@ -68,7 +68,7 @@ const steps = [
 ]
 
 function App() {
-  const { articles, loading, error } = useArticles()
+  const { articles, loading, error } = useArticles({ pinnedFirst: true })
   const location = useLocation()
 
   useEffect(() => {

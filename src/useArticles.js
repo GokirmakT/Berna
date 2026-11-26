@@ -13,6 +13,8 @@ export function mapArticle(row) {
     excerpt: row.excerpt,
     paragraphs: row.paragraphs,
     published: row.published,
+    createdAt: row.created_at,
+    pinned: row.pinned ?? false,
   }
 }
 
@@ -20,7 +22,7 @@ function getErrorMessage(error, fallback) {
   return typeof error?.message === 'string' ? error.message : fallback
 }
 
-export function useArticles({ publishedOnly = true } = {}) {
+export function useArticles({ publishedOnly = true, pinnedFirst = false } = {}) {
   const [articles, setArticles] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -42,7 +44,12 @@ export function useArticles({ publishedOnly = true } = {}) {
         let query = supabase
           .from('articles')
           .select('*')
-          .order('created_at', { ascending: false })
+
+        if (pinnedFirst) {
+          query = query.order('pinned', { ascending: false })
+        }
+
+        query = query.order('created_at', { ascending: false })
 
         if (publishedOnly) {
           query = query.eq('published', true)
@@ -78,7 +85,7 @@ export function useArticles({ publishedOnly = true } = {}) {
     return () => {
       active = false
     }
-  }, [publishedOnly])
+  }, [publishedOnly, pinnedFirst])
 
   return { articles, loading, error }
 }
