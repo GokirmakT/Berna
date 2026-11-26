@@ -8,6 +8,7 @@ import {
 } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { SiteLayout } from './SiteChrome.jsx'
+import ArticleImage from './ArticleImage.jsx'
 import { colors } from './theme.js'
 import { useArticles } from './useArticles.js'
 
@@ -72,28 +73,29 @@ function ArticlesPage() {
                 component="article"
                 sx={{
                   display: 'grid',
-                  gridTemplateColumns: { xs: '1fr', md: '280px 1fr' },
+                  gridTemplateColumns: {
+                    xs: 'minmax(0, 1fr)',
+                    md: '280px minmax(0, 1fr)',
+                  },
                   gap: { xs: 2, md: 3.5 },
                   p: { xs: 2, md: 2.5 },
                   bgcolor: colors.sageLight,
                   border: `1px solid ${colors.line}`,
+                  minWidth: 0,
                 }}
               >
-                <Box
-                  component="img"
+                <ArticleImage
                   src={article.image}
                   alt={article.imageAlt}
                   loading="lazy"
-                  sx={{
-                    display: 'block',
-                    width: '100%',
-                    aspectRatio: '3 / 2',
-                    objectFit: 'cover',
-                    borderRadius: '4px',
-                    filter: 'saturate(0.82)',
-                  }}
                 />
-                <Stack sx={{ alignItems: 'flex-start', py: { md: 0.5 } }}>
+                <Stack
+                  sx={{
+                    alignItems: 'flex-start',
+                    py: { md: 0.5 },
+                    minWidth: 0,
+                  }}
+                >
                   <Stack
                     direction="row"
                     sx={{
@@ -127,6 +129,7 @@ function ArticlesPage() {
                       fontSize: { xs: 27, md: 32 },
                       fontWeight: 500,
                       lineHeight: 1.15,
+                      overflowWrap: 'anywhere',
                     }}
                   >
                     {article.title}
@@ -137,6 +140,7 @@ function ArticlesPage() {
                       color: colors.muted,
                       fontSize: 15,
                       lineHeight: 1.85,
+                      overflowWrap: 'anywhere',
                     }}
                   >
                     {article.excerpt}

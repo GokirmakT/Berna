@@ -12,6 +12,7 @@ import {
   Typography,
 } from '@mui/material'
 import { supabase } from './supabase.js'
+import ArticleImage from './ArticleImage.jsx'
 import { colors } from './theme.js'
 import { mapArticle } from './useArticles.js'
 
@@ -812,16 +813,9 @@ function AdminPage() {
                     />
                   </Button>
                   {selectedArticle.image && (
-                    <Box
-                      component="img"
+                    <ArticleImage
                       src={selectedArticle.image}
                       alt={selectedArticle.imageAlt}
-                      sx={{
-                        width: '100%',
-                        maxHeight: 320,
-                        objectFit: 'cover',
-                        borderRadius: '4px',
-                      }}
                     />
                   )}
                   <FormControlLabel

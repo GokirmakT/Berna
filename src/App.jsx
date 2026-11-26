@@ -10,6 +10,7 @@ import {
 } from '@mui/material'
 import { Link, useLocation } from 'react-router-dom'
 import { Arrow, SiteLayout } from './SiteChrome.jsx'
+import ArticleImage from './ArticleImage.jsx'
 import { colors } from './theme.js'
 import { useArticles } from './useArticles.js'
 
@@ -813,7 +814,10 @@ function App() {
             <Box
               sx={{
                 display: 'grid',
-                gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' },
+                gridTemplateColumns: {
+                  xs: 'minmax(0, 1fr)',
+                  md: 'repeat(3, minmax(0, 1fr))',
+                },
                 gap: { xs: 3, md: 2.5 },
               }}
             >
@@ -840,24 +844,16 @@ function App() {
                     sx={{
                       display: 'flex',
                       flexDirection: 'column',
+                      minWidth: 0,
                       p: { xs: 2, md: 2.5 },
                       bgcolor: colors.cream,
                       border: `1px solid ${colors.line}`,
                     }}
                   >
-                    <Box
-                      component="img"
+                    <ArticleImage
                       src={article.image}
                       alt={article.imageAlt}
                       loading="lazy"
-                      sx={{
-                        display: 'block',
-                        width: '100%',
-                        aspectRatio: '3 / 2',
-                        objectFit: 'cover',
-                        borderRadius: '4px',
-                        filter: 'saturate(0.82)',
-                      }}
                     />
                     <Stack
                       direction="row"
@@ -899,6 +895,7 @@ function App() {
                         color: colors.muted,
                         fontSize: 15,
                         lineHeight: 1.85,
+                        overflowWrap: 'anywhere',
                       }}
                     >
                       {article.excerpt}

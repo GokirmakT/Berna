@@ -8,6 +8,7 @@ import {
 } from '@mui/material'
 import { Link, useParams } from 'react-router-dom'
 import { SiteLayout } from './SiteChrome.jsx'
+import ArticleImage from './ArticleImage.jsx'
 import { colors } from './theme.js'
 import { useArticle } from './useArticles.js'
 
@@ -65,19 +66,10 @@ function ArticlePage() {
           >
             {article.excerpt}
           </Typography>
-          <Box
-            component="img"
+          <ArticleImage
             src={article.image}
             alt={article.imageAlt}
-            sx={{
-              display: 'block',
-              width: '100%',
-              aspectRatio: '3 / 2',
-              mt: { xs: 3, md: 5 },
-              objectFit: 'cover',
-              borderRadius: '4px',
-              filter: 'saturate(0.82)',
-            }}
+            sx={{ mt: { xs: 3, md: 5 } }}
           />
           <Box sx={{ maxWidth: 690, mx: 'auto', mt: { xs: 3, md: 5 } }}>
             {article.paragraphs.map((paragraph) => (
